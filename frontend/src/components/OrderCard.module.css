@@ -1,0 +1,119 @@
+.card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1.5px solid var(--gray-l);
+  overflow: hidden;
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 3px 14px rgba(30,45,76,.09); }
+.urgent { border-color: #f0b8b0; }
+.expired { border-color: #f5a0a0; }
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 13px 15px;
+  cursor: pointer;
+  user-select: none;
+}
+.badge {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .65rem; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.meta { flex: 1; min-width: 0; }
+.name { font-weight: 600; font-size: .84rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sub  { font-size: .67rem; color: var(--gray); margin-top: 1px; }
+.pills { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 5px; }
+.pill {
+  font-size: .6rem; padding: 2px 7px;
+  border-radius: 9px; font-weight: 600;
+}
+.pillPend   { background: #fef9c3; color: #854d0e; }
+.pillDel    { background: var(--ok-bg); color: var(--ok); }
+.pillRet    { background: #ede9fe; color: #4c1d95; }
+.pillTr     { background: var(--navy-l); color: var(--navy); }
+.pillPickup { background: #fce7f3; color: #9d174d; }
+
+.flag { font-size: .65rem; font-weight: 600; padding: 2px 7px; border-radius: 6px; margin-top: 4px; width: fit-content; }
+.flagUrg { color: var(--danger); background: var(--danger-bg); }
+.flagExp { color: #7f1d1d; background: #fee2e2; }
+
+.amt { text-align: right; flex-shrink: 0; }
+.amtVal { font-size: .92rem; font-weight: 700; }
+.amtLbl { font-size: .6rem; color: var(--gray); margin-top: 1px; }
+.amtSub { font-size: .6rem; color: var(--sage-d); }
+.statusSel {
+  margin-top: 5px; font-size: .6rem; padding: 3px 6px;
+  border: 1.5px solid var(--gray-l); border-radius: 8px;
+  background: #fff; color: var(--gray); font-family: inherit; cursor: pointer;
+}
+.chev { display: inline-block; transition: transform .2s; font-size: .72rem; color: var(--gray); margin-top: 4px; }
+.chev.open { transform: rotate(180deg); }
+
+/* sub panel */
+.panel { border-top: 1.5px solid var(--warm-l); padding: 0 15px; background: var(--warm-ll); }
+.noSubs { padding: 8px 0 4px; font-size: .73rem; color: var(--gray); }
+.tbl { width: 100%; border-collapse: collapse; margin: 8px 0; table-layout: fixed; }
+.tbl th {
+  font-size: .6rem; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--gray); font-weight: 600; padding: 5px 6px; text-align: left;
+  border-bottom: 1.5px solid var(--gray-l);
+}
+.tbl td {
+  padding: 7px 6px; font-size: .73rem;
+  border-bottom: 1px solid var(--gray-ll); vertical-align: middle; overflow: hidden;
+}
+.tbl tr:last-child td { border-bottom: none; }
+.retRow td { opacity: .5; }
+.tbl tr:hover:not(.retRow) td { background: var(--sage-l); }
+
+.spName { font-weight: 600; }
+.qty { color: var(--gray); font-size: .62rem; }
+.delBadge { display: inline-block; margin-top: 2px; font-size: .55rem; }
+
+/* return bar */
+.rbar { height: 4px; border-radius: 3px; background: var(--gray-ll); overflow: hidden; margin-top: 3px; }
+.rbf  { height: 100%; border-radius: 3px; }
+.safe   { background: var(--sage-d); }
+.warn   { background: #d97706; }
+.danger { background: var(--danger); }
+.done   { background: var(--gray-l); }
+.dl { font-size: .6rem; font-weight: 600; margin-top: 2px; }
+
+/* action buttons */
+.actBtns { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.mdbBtn {
+  border: 1.5px solid var(--ok); border-radius: 5px; padding: 2px 7px;
+  font-size: .6rem; font-weight: 600; color: var(--ok); background: none;
+  transition: all .15s;
+}
+.mdbBtn:hover { background: var(--ok); color: #fff; }
+.mbtn {
+  border: 1.5px solid var(--sage); border-radius: 5px; padding: 2px 7px;
+  font-size: .6rem; font-weight: 600; color: var(--sage-d); background: none;
+  transition: all .15s; white-space: nowrap;
+}
+.mbtn:hover { background: var(--sage-d); color: #fff; }
+.mbtn.undo { border-color: var(--navy-l); color: var(--navy); }
+.mbtn.undo:hover { background: var(--navy); color: #fff; }
+.mbtn.edit { border-color: var(--navy-l); color: var(--navy-m); }
+.mbtn.edit:hover { background: var(--navy); color: #fff; }
+.mbtn.del { border-color: #fca5a5; color: var(--danger); }
+.mbtn.del:hover { background: var(--danger); color: #fff; }
+
+.addSubBtn {
+  margin: 6px 0 8px; background: none; border: 1.5px dashed var(--sage);
+  color: var(--sage-d); border-radius: 7px; padding: 5px 10px; font-size: .7rem;
+  font-weight: 600; width: 100%;
+}
+.addSubBtn:hover { border-color: var(--sage-d); background: var(--sage-l); }
+
+.cardActions { display: flex; justify-content: flex-end; padding: 2px 0 6px; }
+.delOrderBtn {
+  background: none; border: none; font-size: .68rem; color: #ccc; padding: 2px 5px;
+}
+.delOrderBtn:hover { color: var(--danger); }
