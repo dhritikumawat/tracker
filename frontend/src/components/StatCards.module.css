@@ -4,6 +4,7 @@
   gap: 10px;
   padding: 16px 24px 0;
 }
+
 .card {
   background: var(--white);
   border-radius: 10px;
@@ -11,6 +12,7 @@
   border-top: 3px solid var(--sage-l);
   text-align: center;
 }
+
 .card label {
   font-size: .58rem;
   text-transform: uppercase;
@@ -19,6 +21,7 @@
   font-weight: 600;
   display: block;
 }
+
 .val {
   font-size: 1.35rem;
   font-weight: 700;
@@ -26,19 +29,52 @@
   margin-top: 2px;
   line-height: 1.1;
 }
-.navy  { border-top-color: var(--navy); }
-.amber { border-top-color: #d97706; }
-.amber .val { color: var(--amber); }
-.ok    { border-top-color: var(--ok); }
-.ok .val { color: var(--ok); }
-.purple { border-top-color: var(--purple); }
-.purple .val { color: var(--purple); }
-.danger { border-top-color: var(--danger); background: var(--danger-bg); }
-.danger .val { color: var(--danger); }
+
+.navy {
+  border-top-color: var(--navy);
+}
+
+.amber {
+  border-top-color: #d97706;
+}
+
+.amber .val {
+  color: var(--amber);
+}
+
+.ok {
+  border-top-color: var(--ok);
+}
+
+.ok .val {
+  color: var(--ok);
+}
+
+.purple {
+  border-top-color: var(--purple);
+}
+
+.purple .val {
+  color: var(--purple);
+}
+
+.danger {
+  border-top-color: var(--danger);
+  background: var(--danger-bg);
+}
+
+.danger .val {
+  color: var(--danger);
+}
 
 @media (max-width: 700px) {
-  .grid { grid-template-columns: repeat(3, 1fr); }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
+
 @media (max-width: 480px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

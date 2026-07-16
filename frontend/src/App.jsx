@@ -6,16 +6,16 @@ import OrderModal from './components/OrderModal';
 import EditSubModal from './components/EditSubModal';
 import styles from './App.module.css';
 
-const FILTERS = ['All','Pending','In Transit','Delivered','Picked Up','Return window','Returned'];
+const FILTERS = ['All', 'Pending', 'In Transit', 'Delivered', 'Picked Up', 'Return window', 'Returned'];
 
 export default function App() {
-  const [stats, setStats]               = useState(null);
-  const [orders, setOrders]             = useState([]);
-  const [customPlats, setCustomPlats]   = useState({});
-  const [filter, setFilter]             = useState('All');
-  const [sort, setSort]                 = useState('newest');
-  const [loading, setLoading]           = useState(false);
-  const [modal, setModal]               = useState(null); // null | { mode: 'add' } | { mode: 'sub', orderId } | { mode: 'editSub', orderId, subIdx, initial }
+  const [stats, setStats] = useState(null);
+  const [orders, setOrders] = useState([]);
+  const [customPlats, setCustomPlats] = useState({});
+  const [filter, setFilter] = useState('All');
+  const [sort, setSort] = useState('newest');
+  const [loading, setLoading] = useState(false);
+  const [modal, setModal] = useState(null); // null | { mode: 'add' } | { mode: 'sub', orderId } | { mode: 'editSub', orderId, subIdx, initial }
 
   const loadAll = useCallback(async () => {
     setLoading(true);
@@ -93,19 +93,19 @@ export default function App() {
   // ── Export CSV ─────────────────────────────────────────────────────────────
   function exportCSV() {
     if (!orders.length) { alert('No orders to export!'); return; }
-    const rows = [['Platform','Order ID','Name','Amount','Status','Order Date','Delivery','Content','Notes','Sub-product','Qty','Price','Policy Days','Return Deadline','Delivered?','Returned?']];
+    const rows = [['Platform', 'Order ID', 'Name', 'Amount', 'Status', 'Order Date', 'Delivery', 'Content', 'Notes', 'Sub-product', 'Qty', 'Price', 'Policy Days', 'Return Deadline', 'Delivered?', 'Returned?']];
     orders.forEach(o => {
       const subs = o.subProducts || [];
       if (!subs.length) {
-        rows.push([o.platform,o.orderId,o.name,o.amount,o.status,o.orderDate,o.deliveryDate,o.contentType,o.notes,'','','','','','','']);
+        rows.push([o.platform, o.orderId, o.name, o.amount, o.status, o.orderDate, o.deliveryDate, o.contentType, o.notes, '', '', '', '', '', '', '']);
       } else {
-        subs.forEach(sp => rows.push([o.platform,o.orderId,o.name,o.amount,o.status,o.orderDate,o.deliveryDate,o.contentType,o.notes,sp.name,sp.qty,sp.price,sp.policyDays,sp.returnDeadline,sp.delivered?'Yes':'No',sp.returned?'Yes':'No']));
+        subs.forEach(sp => rows.push([o.platform, o.orderId, o.name, o.amount, o.status, o.orderDate, o.deliveryDate, o.contentType, o.notes, sp.name, sp.qty, sp.price, sp.policyDays, sp.returnDeadline, sp.delivered ? 'Yes' : 'No', sp.returned ? 'Yes' : 'No']));
       }
     });
-    const csv = rows.map(r => r.map(v => `"${String(v||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+    const csv = rows.map(r => r.map(v => `"${String(v || '').replace(/"/g, '""')}"`).join(',')).join('\n');
     const a = document.createElement('a');
     a.href = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
-    a.download = 'orders_' + new Date().toISOString().slice(0,10) + '.csv';
+    a.download = 'orders_' + new Date().toISOString().slice(0, 10) + '.csv';
     a.click();
   }
 
