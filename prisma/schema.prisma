@@ -67,9 +67,6 @@ model Order {
   subProducts         SubProduct[]
   customPlatforms     Json?
   
-  _isUrgent           Boolean @default(false)
-  _isExpired          Boolean @default(false)
-  
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
   
@@ -87,8 +84,6 @@ model SubProduct {
   policyDays      Int      @default(7)
   returned        Boolean  @default(false)
   returnedDate    DateTime?
-  
-  _returnStatus   Json?
   
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt

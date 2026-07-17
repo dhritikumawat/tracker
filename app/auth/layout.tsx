@@ -1,23 +1,27 @@
-import type { Metadata } from "next";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import { redirect } from "next/navigation";
+"use client";
+
+import type { ReactNode } from "react";
 import Link from "next/link";
+import { useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Auth - Order Tracker",
-  description: "Sign in or sign up to your order tracker",
-};
-
-export default async function AuthLayout({
+export default function AuthLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
-  const session = await getServerSession(authOptions);
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
-  if (session) {
-    redirect("/");
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/");
+    }
+  }, [status, router]);
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
   }
 
   return (
